@@ -1,10 +1,10 @@
-function getComputerChoice(): string {
+function getComputerChoice() {
     const choices = ["rock", "paper", "scissors"];
     const randomIndex = Math.floor(Math.random() * choices.length);
     return choices[randomIndex];
 }
 
-function playRound(playerSelection: string, computerSelection: string): string {
+function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
     if (playerSelection === computerSelection) {
         return "It's a tie!";
@@ -21,22 +21,22 @@ function playRound(playerSelection: string, computerSelection: string): string {
     }
 }
 
-function capitalizeFirstLetter(str: string): string {
+function capitalizeFirstLetter(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-const buttons = document.querySelectorAll<HTMLButtonElement>('.buttons button');
-const resultsDiv = document.querySelector<HTMLDivElement>('.results')!;
-const playerScoreSpan = document.querySelector<HTMLSpanElement>('#playerScore')!;
-const computerScoreSpan = document.querySelector<HTMLSpanElement>('#computerScore')!;
-const winnerDiv = document.querySelector<HTMLDivElement>('.winner')!;
+const buttons = document.querySelectorAll('.buttons button');
+const resultsDiv = document.querySelector('.results');
+const playerScoreSpan = document.getElementById('playerScore');
+const computerScoreSpan = document.getElementById('computerScore');
+const winnerDiv = document.querySelector('.winner');
 
 let playerScore = 0;
 let computerScore = 0;
 
 buttons.forEach(button => {
     button.addEventListener('click', () => {
-        const playerChoice = button.dataset.choice!;
+        const playerChoice = button.dataset.choice;
         const computerChoice = getComputerChoice();
         const roundResult = playRound(playerChoice, computerChoice);
         resultsDiv.textContent = roundResult;
